@@ -1,6 +1,7 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import { useState } from "react";
 import styled from "styled-components";
+import { sliderItems } from "../data";
 
 const Container = styled.div`
     width: 100%;
@@ -86,37 +87,20 @@ const Slider = () => {
             <Arrow direction="left" onClick={() => handleClick("left")}>
                 <ArrowLeftOutlined />
             </Arrow>
-            <Wrapper> 
-                <Slide backgroundColor="f4fafd">
-                    <ImageContainer>
-                        <Image src="https://wallpapercave.com/wp/wp4244900.jpg" />
-                    </ImageContainer>
-                    <InfoContainer>
-                        <Title>SUMMER SALE</Title>
-                        <Description>DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.</Description>
-                        <Button>SHOP NOW</Button>
-                    </InfoContainer>
-                </Slide>
-                <Slide backgroundColor="fcf1ed">
-                    <ImageContainer>
-                        <Image src="https://wallpapercave.com/wp/wp4244900.jpg" />
-                    </ImageContainer>
-                    <InfoContainer>
-                        <Title>SUMMER SALE</Title>
-                        <Description>DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.</Description>
-                        <Button>SHOP NOW</Button>
-                    </InfoContainer>
-                </Slide>
-                <Slide backgroundColor="fbf0f4">
-                    <ImageContainer>
-                        <Image src="https://wallpapercave.com/wp/wp4244900.jpg" />
-                    </ImageContainer>
-                    <InfoContainer>
-                        <Title>SUMMER SALE</Title>
-                        <Description>DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.</Description>
-                        <Button>SHOP NOW</Button>
-                    </InfoContainer>
-                </Slide>
+            <Wrapper>
+                {sliderItems.map(item => (
+                    <Slide backgroundColor={item.bg}>
+                        <ImageContainer>
+                            <Image src={item.img} />
+                        </ImageContainer>
+                        <InfoContainer>
+                            <Title>{item.title}</Title>
+                            <Description>{item.desc}</Description>
+                            <Button>SHOP NOW</Button>
+                        </InfoContainer>
+                    </Slide>
+                    ) 
+                )} 
             </Wrapper>
             <Arrow direction="right" onClick={() => handleClick("right")}>
                 <ArrowRightOutlined />
